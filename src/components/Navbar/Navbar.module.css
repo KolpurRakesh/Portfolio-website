@@ -1,0 +1,125 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Apply space-between */
+  padding-top: 61px;
+  padding-left: 10%;
+  padding-right: 10%;
+  z-index: 2;
+  margin: 0;
+  background-color: transparent;
+  transition: background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+  background-color: rgb(5, 16, 46);
+ padding-top:20px;
+ padding-bottom: 20px;
+  
+}
+
+.title {
+  font-size: 30px;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.menu {
+  display: flex;
+}
+
+.menuItems {
+  display: flex;
+  gap: 47px;
+  list-style: none;
+}
+
+.menuBtn {
+  display: none;
+}
+
+.menuItems a {
+  font-size: 25px;
+  color: var(--color-text);
+  text-decoration: none;
+}
+/* Navbar.module.css */
+
+/* Add underline animation */
+@keyframes underline {
+  from {
+    width: 0;
+    margin-left: 50%;
+  }
+  to {
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+.menuItems li {
+  position: relative; /* Ensure proper positioning of the underline */
+}
+
+.menuItems a::after {
+  content: "";
+  position: absolute;
+  bottom: -3px; /* Adjust the distance of the underline from the text */
+  left: 0; /* Start from the center */
+  width: 0; /* Initially invisible */
+  height: 2px; /* Thickness of the underline */
+  background: linear-gradient(90deg, 
+    rgb(221, 142, 6), /* Orange */
+    rgba(255, 0, 0, 1), /* Red */
+    rgba(0, 0, 255, 1), /* Blue */
+    rgba(255, 255, 255, 1), /* White */
+    rgba(0, 0, 0, 1) Black
+  );/* Color of the underline */
+  /* Color of the underline */
+  transition: width 0.3s ease, margin-left 0.3s ease; /* Smooth transition */
+}
+
+.menuItems a:hover::after {
+  animation: underline 0.3s forwards; /* Apply the underline animation on hover */
+}
+
+
+@media screen and (max-width: 830px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .menu {
+    position: absolute;
+    right: 0;
+    margin-right: 10%;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 11px;
+    z-index: 3;
+  }
+  .menuBtn {
+    display: block;
+    cursor: pointer;
+  }
+  .menuItems {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 13px;
+    border-radius: 10px;
+    background: rgb(25, 55, 109);
+    background-color: rgb(2, 22, 61);
+    padding: 24px 33px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.25);
+  }
+  .menuOpen {
+    display: flex;
+    z-index: 1;
+  }
+}
